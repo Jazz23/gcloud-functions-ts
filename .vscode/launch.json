@@ -44,6 +44,43 @@
                 "${workspaceFolder}/node_modules/**/*.js"
             ],
             "type": "node"
-        }
+        },
+        {
+            "args": [
+                "--timeout",
+                "999999",
+                "--colors",
+                "${workspaceFolder}/test/*.ts",
+                "-r",
+                "ts-node/register",
+                "--grep",
+                "helloHttp"
+            ],
+            "internalConsoleOptions": "openOnSessionStart",
+            "name": "Mocha helloHttp",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**",
+                "${workspaceFolder}/node_modules/**/*.js"
+            ],
+            "type": "node"
+        },
+        {
+            "name": "Debug Mocha Tests",
+            "type": "node",
+            "request": "attach",
+            "port": 9229,
+            "continueOnAttach": true,
+            "autoAttachChildProcesses": false,
+            "resolveSourceMapLocations": [
+              "!**/node_modules/**",
+              "!**/.vscode/extensions/hbenl.vscode-mocha-test-adapter-*/**"
+            ],
+            "skipFiles": [
+              "<node_internals>/**",
+              "${workspaceFolder}/node_modules/**/*.js"
+            ]
+          }
     ]
 }
